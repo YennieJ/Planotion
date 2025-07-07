@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# PlanMate specific
+.env.local
+.env.production
+
+# Development
+.vscode/
+.idea/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db" >> .gitignore
