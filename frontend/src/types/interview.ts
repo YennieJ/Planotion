@@ -1,4 +1,6 @@
 // types/interview.ts
+export type PlanCategory = 'frontend' | 'backend' | 'fullstack' | 'mobile' | 'data';
+
 export interface InterviewQuestion {
   id: string;
   type: 'text' | 'select' | 'multiselect' | 'slider';

@@ -1,10 +1,12 @@
+'use client';
+
 // components/interview/QuestionCard.tsx
 import { InterviewQuestion } from '@/types/interview';
 
 interface QuestionCardProps {
   question: InterviewQuestion;
-  value: any;
-  onChange: (value: any) => void;
+  value: string | string[];
+  onChange: (value: string | string[]) => void;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -89,7 +91,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     if (e.target.checked) {
                       onChange([...currentValue, option]);
                     } else {
-                      onChange(currentValue.filter((v: string) => v !== option));
+                      onChange(Array.isArray(currentValue) ? currentValue.filter((v: string) => v !== option) : []);
                     }
                   }}
                   className="mr-2"

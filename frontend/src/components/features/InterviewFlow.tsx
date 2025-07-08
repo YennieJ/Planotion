@@ -1,15 +1,17 @@
+'use client';
+
 // components/interview/InterviewFlow.tsx
 import { useState } from 'react';
-import { InterviewQuestion, InterviewSession } from '@/types/interview';
+import { InterviewQuestion } from '@/types/interview';
 import { QuestionCard } from './QuestionCard';
 import { INTERVIEW_QUESTIONS } from '@/data/interviewQuestions';
 
 export const InterviewFlow = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, any>>({});
+  const [answers, setAnswers] = useState<Record<string, string | string[]>>({});
   const [questions] = useState<InterviewQuestion[]>(INTERVIEW_QUESTIONS);
 
-  const handleAnswer = (questionId: string, value: any) => {
+  const handleAnswer = (questionId: string, value: string | string[]) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: value
@@ -47,7 +49,7 @@ export const InterviewFlow = () => {
       return currentAnswer && currentAnswer.length > 0;
     }
     
-    return currentAnswer && currentAnswer.trim() !== '';
+    return currentAnswer && typeof currentAnswer === 'string' && currentAnswer.trim() !== '';
   };
 
   const getProgressText = () => {
